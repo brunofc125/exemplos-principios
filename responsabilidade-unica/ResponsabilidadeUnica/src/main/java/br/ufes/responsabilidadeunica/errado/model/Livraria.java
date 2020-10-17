@@ -21,7 +21,7 @@ public class Livraria {
     private String nome;
     private List<LivrariaLivro> livrariaLivros;
 
-    public Livraria(String nome, List<LivrariaLivro> livrariaLivros) {
+    public Livraria(String nome) {
         this.id = UUID.randomUUID();
         this.setNome(nome);
         this.livrariaLivros = new ArrayList<>();
@@ -46,6 +46,7 @@ public class Livraria {
         return livrariaLivros;
     }
 
+    // Método que não segue o principio
     public void addLivro() {
         Scanner sc = new Scanner(System.in);
         System.out.println("ISBN do livro:");

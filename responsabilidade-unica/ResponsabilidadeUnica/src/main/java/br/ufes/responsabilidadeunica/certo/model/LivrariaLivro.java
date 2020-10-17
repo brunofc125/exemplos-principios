@@ -5,8 +5,6 @@
  */
 package br.ufes.responsabilidadeunica.certo.model;
 
-import br.ufes.responsabilidadeunica.errado.model.*;
-
 /**
  *
  * @author bruno
@@ -54,6 +52,14 @@ public class LivrariaLivro {
             throw new RuntimeException("Quantidade não pode ser negativa");
         }
         this.quantidade = quantidade;
+    }
+    
+    public void incrementarQuantidade() {
+        this.quantidade++;
+    }
+    
+    public void decrementarQuantidade() {
+        this.setQuantidade(this.quantidade-1);
     }
     
     

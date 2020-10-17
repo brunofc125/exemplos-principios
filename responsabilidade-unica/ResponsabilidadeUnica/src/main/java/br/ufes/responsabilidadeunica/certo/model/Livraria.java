@@ -5,9 +5,10 @@
  */
 package br.ufes.responsabilidadeunica.certo.model;
 
-import br.ufes.responsabilidadeunica.errado.model.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -15,20 +16,17 @@ import java.util.List;
  */
 public class Livraria {
 
-    private String id;
+    private UUID id;
     private String nome;
     private List<LivrariaLivro> livrariaLivros;
 
-    public Livraria(String id, String nome, List<LivrariaLivro> livrariaLivros) {
-        if(id == null) {
-            throw new RuntimeException("Id da livraria não informado");
-        }
-        this.id = id;
+    public Livraria(String nome) {
+        this.id = UUID.randomUUID();
         this.setNome(nome);
         this.livrariaLivros = new ArrayList<>();
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -37,7 +35,7 @@ public class Livraria {
     }
 
     public void setNome(String nome) {
-        if(nome == null) {
+        if (nome == null) {
             throw new RuntimeException("Nome da livraria não informado");
         }
         this.nome = nome;
@@ -47,9 +45,20 @@ public class Livraria {
         return livrariaLivros;
     }
 
+    // metodo correto
+    public void addLivro(Livro livro) {
+        var livroISBN = this.getLivrariaLivroISBN(livro);
+        if(livroISBN == null) {
+            var livrariaLivro = new LivrariaLivro(this, livro, 1);
+            this.livrariaLivros.add(livrariaLivro);
+        } else {
+            livroISBN.incrementarQuantidade();
+        }
+    }
     
-    
-    
-    
-    
+    private LivrariaLivro getLivrariaLivroISBN(Livro livro) {
+        var livroISBN = this.livrariaLivros.stream().filter(l -> l.getLivro().getISBN().equals(livro.getISBN())).collect(Collectors.toList());
+        return livroISBN != null && !livroISBN.isEmpty() ? livroISBN.get(0) : null;
+    }
+
 }

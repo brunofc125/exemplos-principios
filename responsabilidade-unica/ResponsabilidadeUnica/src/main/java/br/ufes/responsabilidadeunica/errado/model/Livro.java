@@ -35,7 +35,7 @@ public class Livro {
 
     public void setISBN(String ISBN) {
         if(ISBN == null) {
-            throw new RuntimeException("Nome do livro não informado");
+            throw new RuntimeException("ISBN do livro não informado");
         }
         this.ISBN = ISBN;
     }

@@ -5,7 +5,7 @@
  */
 package br.ufes.responsabilidadeunica.errado.view;
 
-import java.util.Scanner;
+import br.ufes.responsabilidadeunica.errado.model.Livraria;
 
 /**
  *
@@ -13,6 +13,11 @@ import java.util.Scanner;
  */
 public class TelaPrincipal {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        var livraria = new Livraria("Livraria A");
+        livraria.addLivro();
+        System.out.println("Livros");
+        for(var livro : livraria.getLivrariaLivros()) {
+            System.out.println(livro.getLivro().getNome());            
+        }
     }
 }

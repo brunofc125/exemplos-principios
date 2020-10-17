@@ -5,7 +5,7 @@
  */
 package br.ufes.responsabilidadeunica.certo.model;
 
-import br.ufes.responsabilidadeunica.errado.model.*;
+import java.util.UUID;
 
 /**
  *
@@ -13,18 +13,31 @@ import br.ufes.responsabilidadeunica.errado.model.*;
  */
 public class Livro {
     
-    private Long id;
+    private UUID id;
+    private String ISBN;
     private String nome;
     private String autor;
 
-    public Livro(Long id, String nome, String autor) {
-        this.id = id;
+    public Livro(String ISBN, String nome, String autor) {
+        this.id = UUID.randomUUID();
+        this.setISBN(ISBN);
         this.setNome(nome);
         this.setAutor(autor);
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        if(ISBN == null) {
+            throw new RuntimeException("ISBN do livro não informado");
+        }
+        this.ISBN = ISBN;
     }
 
     public String getNome() {
