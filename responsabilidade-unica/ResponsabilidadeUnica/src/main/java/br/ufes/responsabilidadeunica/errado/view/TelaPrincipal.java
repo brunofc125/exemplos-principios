@@ -13,11 +13,16 @@ import br.ufes.responsabilidadeunica.errado.model.Livraria;
  */
 public class TelaPrincipal {
     public static void main(String[] args) {
-        var livraria = new Livraria("Livraria A");
-        livraria.addLivro();
-        System.out.println("Livros");
-        for(var livro : livraria.getLivrariaLivros()) {
-            System.out.println(livro.getLivro().getNome());            
+        try {
+            var livraria = new Livraria("Livraria A");
+            livraria.addLivro();
+            System.out.println("Livros");
+            for(var livro : livraria.getLivrariaLivros()) {
+                System.out.println(livro.getLivro().getNome());            
+            }
+        }  catch (RuntimeException e ) {
+            System.out.println(e.getMessage());
         }
+        
     }
 }
