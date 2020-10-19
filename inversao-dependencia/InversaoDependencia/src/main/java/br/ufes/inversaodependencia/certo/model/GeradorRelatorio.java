@@ -10,5 +10,6 @@ package br.ufes.inversaodependencia.certo.model;
  * @author bruno
  */
 public interface GeradorRelatorio {
-        public void gerarRelatorio(Produto produto);
+
+    public void gerarRelatorio(Produto produto);
 }
