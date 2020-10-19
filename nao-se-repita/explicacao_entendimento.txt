@@ -1,0 +1,3 @@
+Entendimento "NAO SE REPITA": (Bruno Fonseca do Carmo)
+
+Entendi que este princípio serve para que não haja a duplicação de código, por exemplo, no meu caso, mostrei que existe uma duplicação em dois exemplos de métodos, um método de adicionar e o outro de getById, em duas collections. Com isso para resolver essa duplicação, apenas criei uma classe genérica para tratar esse exemplo.
