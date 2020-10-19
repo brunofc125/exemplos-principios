@@ -34,7 +34,7 @@ public class ContaComum {
     }
 
     public void rende() {
-        this.saldo *= 0.02;
+        this.saldo += this.saldo*0.02;
     }
 
 }
